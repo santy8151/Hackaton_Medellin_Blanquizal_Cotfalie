@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "HackMedellín — Agua y Futuro"
+description = "Experiencia digital de innovación ciudadana sobre el agua en Medellín, con aprendizaje, exploración de telemetría hídrica y una narrativa ilustrada del territorio."
+version = "1.0.0"
+id = "artifacts/hackmedellin-agua"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21450
+
+[services.development]
+run = "pnpm --filter @workspace/hackmedellin-agua run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hackmedellin-agua", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hackmedellin-agua/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21450"
+BASE_PATH = "/"
