@@ -1,0 +1,1 @@
+- [Audience and copy](audience.md) — the site is for children; favor concise, visual explanations and keep core map/video content.
